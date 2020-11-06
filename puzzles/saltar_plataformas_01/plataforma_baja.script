@@ -1,7 +1,7 @@
 function init(self)
 	local p = go.get_position()
-	local new_p = vmath.vector3(p.x, p.y -200, 0)
-	go.animate(".", "position", go.PLAYBACK_LOOP_PINGPONG, new_p, go.EASING_LINEAR, 2)
+	local new_p = vmath.vector3(p.x, p.y -100, p.z)
+	go.animate(".", "position", go.PLAYBACK_LOOP_PINGPONG, new_p, go.EASING_LINEAR, 5)
 end
 
 function final(self)
@@ -19,9 +19,9 @@ end
 function on_message(self, message_id, message, sender)
 	if message_id == hash("trigger_response") then
 		if message.enter == true then
-			msg.post("main:/player", "set_parent", {parent_id = go.get_id(), keep_world_transform = 1})
+			msg.post(message.other_id, "set_parent", {parent_id = go.get_id(), keep_world_transform = 1})
 		elseif message.enter == false then
-			msg.post("main:/player", "set_parent", {keep_world_transform = 1})
+			msg.post(message.other_id, "set_parent", {keep_world_transform = 1})
 
 		end
 	end

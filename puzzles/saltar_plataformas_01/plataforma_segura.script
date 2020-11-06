@@ -1,9 +1,9 @@
+local datos = require("main.datos")
+
 function init(self)
-	--print(msg.url())
-	msg.post(".", "acquire_input_focus")
-	--msg.post("#pantalla_intro", "load")
-	msg.post("#Bosque_principal", "load")
-	self.proximo_mapa_a_cargar = ""
+	-- Add initialization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
 end
 
 function final(self)
@@ -19,21 +19,11 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-	--print(message_id)
-	if message_id == hash("proxy_loaded") then
-		msg.post(sender, "enable")
-	elseif message_id == hash("proxy_unloaded") then
-		msg.post(self.proximo_mapa_a_cargar, "load")
-	elseif message_id == hash("fin_de_cinematica") then
-		--print("FIN DE CINEMTICA")
-		msg.post("#mapa_01", "load")
-	elseif message_id == hash("cambiar_de_mapa") then
-		msg.post(message.mapa_actual, "disable")
-		msg.post(message.mapa_actual, "final")
-		msg.post(message.mapa_actual, "unload")
-		self.proximo_mapa_a_cargar = message.mapa_nuevo
+	if message_id == hash("trigger_response") and message.enter then
+		msg.post(message.other_id, "plataforma_segura", {posicion = go.get_position()})
 	end
 end
+
 
 function on_input(self, action_id, action)
 	-- Add input-handling code here. The game object this script is attached to

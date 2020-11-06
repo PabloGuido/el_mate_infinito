@@ -7,7 +7,7 @@ local sprite_derecha_idle = hash("pj")
 local sprite_izquierda = hash("pj")
 local sprite_izquierda_idle = hash("pj")
 
-
+-- datos varios necesarios para el juego
 local datos = require("main.datos")
 
 -- Módulo del inventario
@@ -63,6 +63,8 @@ function init(self)
 	self.velocidad_de_movimiento = self.velocidad_por_defecto
 	self.direccion_donde_apunta_player = vmath.vector3()
 	self.ultima_direccion_donde_apunto_player = vmath.vector3(0, -1, 0)
+	self.ultima_plataforma_segura = vmath.vector3()
+	self.parado_sobre_vacio = 0
 	--self.animacion_del_player = hash("player_abajo")
 	self.ultima_animacion = sprite_frente_idle
 
@@ -100,7 +102,7 @@ function init(self)
 	else
 		go.set("#sprite", "tint.w", 0)
 		-- cambiar los primeros dos ceros por el tiempo que haga falta para arrancar nuevo mapa
-		go.animate("#sprite", "tint.w", go.PLAYBACK_ONCE_FORWARD, 1, go.EASING_LINEAR, 2, 0.1,function() msg.post(".", "acquire_input_focus") end)
+		go.animate("#sprite", "tint.w", go.PLAYBACK_ONCE_FORWARD, 1, go.EASING_LINEAR, 0.5, 0.1,function() msg.post(".", "acquire_input_focus") end)
 	end
 
 
@@ -173,15 +175,17 @@ function update(self, dt)
 	-- 4) Restaurar la dirección del player para cuando ya deje de moverse.
 
 	if self.parado_sobre_vacio == true then
+		
 		if self.embistiendo == true or self.parado_sobre_plataforma == true then
 			return
 		else
+			-- usar esto para enviar al player a la ultima posicion segura
+			print(self.parado_sobre_plataforma)
 			local p = go.get_position()
-			go.set_position(vmath.vector3(294,626, p.z))
+			go.set_position(vmath.vector3(self.ultima_plataforma_segura.x, self.ultima_plataforma_segura.y, p.z))
+			datos.parpadeo()
 		end
 	end
-
-
 end
 
 function on_message(self, message_id, message, sender)
@@ -209,6 +213,7 @@ function on_message(self, message_id, message, sender)
 		elseif message.other_group == hash("camara") and message.enter == true then
 			pprint(message)
 		end
+		print(self.parado_sobre_plataforma)
 	elseif message_id == hash("rompible_destruido") then
 		self.objeto_destruido = true
 		self.velocidad_de_movimiento = self.velocidad_por_defecto 
@@ -219,6 +224,8 @@ function on_message(self, message_id, message, sender)
 		timer.delay(0.1, false, function() self.objeto_destruido = false end)
 	elseif message_id == hash("player_recobra_input") then
 		msg.post(".", "acquire_input_focus")
+	elseif message_id == hash("plataforma_segura") then
+		self.ultima_plataforma_segura = message.posicion
 	end
 end
 
@@ -280,21 +287,18 @@ elseif action_id == hash("charge") then
 			particlefx.stop("#charging1")
 			self.carga_de_embestida = 0
 
-
-
 			if self.direccion_donde_apunta_player == vmath.vector3() then
 				self.direccion_donde_apunta_player = self.ultima_direccion_donde_apunto_player
 			end
 
 			sound.play("#dash")
-
+			
 			self.velocidad_de_movimiento = 230
-
 			timer.delay(0.1, false,
 			function()
 				self.velocidad_de_movimiento = self.velocidad_por_defecto
-				self.embistiendo = false 
 				msg.post(".", "acquire_input_focus")
+				self.embistiendo = false 
 			end)
 
 		elseif self.carga_de_embestida >= 50 then
@@ -314,17 +318,18 @@ elseif action_id == hash("charge") then
 			timer.delay(0.1, false, 
 			function()
 				if self.objeto_destruido == false then 
+					self.embistiendo = false 
 					self.velocidad_de_movimiento = self.velocidad_por_defecto 
 					self.carga_de_embestida = 0 
-					self.embistiendo = false 
 					msg.post(".", "acquire_input_focus") 
 					go.set_position(vmath.vector3(0,0,-0.25), "charge") 
 				end
 			end)
 
 		end
-	end
 
+	end
+	
 elseif action_id == hash("fisicas_debug") and action.pressed then 
 	-- "F", prende/apaga el debug de los objetos físicos. 
 	msg.post("@system:", "toggle_physics_debug")

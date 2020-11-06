@@ -79,6 +79,106 @@ instances {
     z: 1.0
   }
 }
+instances {
+  id: "plataforma_baja"
+  prototype: "/puzzles/saltar_plataformas_01/plataforma_baja.go"
+  position {
+    x: 62.0
+    y: 168.0
+    z: 0.75
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "plataforma_sube"
+  prototype: "/puzzles/saltar_plataformas_01/plataforma_sube.go"
+  position {
+    x: 96.0
+    y: 76.0
+    z: 0.75
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "plataforma_baja1"
+  prototype: "/puzzles/saltar_plataformas_01/plataforma_baja.go"
+  position {
+    x: 129.0
+    y: 168.0
+    z: 0.75
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "vacio"
+  prototype: "/puzzles/saltar_plataformas_01/vacio.go"
+  position {
+    x: 91.0
+    y: 140.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.1
+    y: 0.1
+    z: 1.0
+  }
+}
+instances {
+  id: "plataforma_segura"
+  prototype: "/puzzles/saltar_plataformas_01/plataforma_segura.go"
+  position {
+    x: 109.0
+    y: 28.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
 collection_instances {
   id: "player"
   collection: "/player/player.collection"
