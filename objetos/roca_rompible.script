@@ -1,0 +1,29 @@
+local datos = require("main.datos")
+function init(self)
+	-- Add initialization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function final(self)
+	--print(go.get_id() .. " destruido.")
+end
+
+function update(self, dt)
+	-- Add update code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("trigger_response") then
+		if message.other_group == hash("charge") then
+			if message.enter == true then
+				msg.post(datos.url_del_player, "rompible_destruido")
+				particlefx.play("#roca_rompible_fx")
+				sound.play("#roca_rompible_snd")
+				go.delete()
+			end
+		end
+	end
+end

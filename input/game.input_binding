@@ -1,0 +1,40 @@
+key_trigger {
+  input: KEY_W
+  action: "arriba"
+}
+key_trigger {
+  input: KEY_A
+  action: "izquierda"
+}
+key_trigger {
+  input: KEY_S
+  action: "abajo"
+}
+key_trigger {
+  input: KEY_D
+  action: "derecha"
+}
+key_trigger {
+  input: KEY_F
+  action: "fisicas_debug"
+}
+key_trigger {
+  input: KEY_E
+  action: "accion"
+}
+key_trigger {
+  input: KEY_I
+  action: "inventario"
+}
+key_trigger {
+  input: KEY_P
+  action: "pos"
+}
+key_trigger {
+  input: KEY_J
+  action: "charge"
+}
+mouse_trigger {
+  input: MOUSE_BUTTON_1
+  action: "touch"
+}

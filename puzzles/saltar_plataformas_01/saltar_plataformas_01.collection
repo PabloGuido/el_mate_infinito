@@ -1,0 +1,122 @@
+name: "default"
+instances {
+  id: "plataforma_baja"
+  prototype: "/puzzles/saltar_plataformas_01/plataforma_baja.go"
+  position {
+    x: -264.0
+    y: 266.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "plataforma_baja1"
+  prototype: "/puzzles/saltar_plataformas_01/plataforma_baja.go"
+  position {
+    x: -6.0
+    y: 197.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "plataforma_baja2"
+  prototype: "/puzzles/saltar_plataformas_01/plataforma_baja.go"
+  position {
+    x: 247.0
+    y: 121.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "plataforma_sube1"
+  prototype: "/puzzles/saltar_plataformas_01/plataforma_sube.go"
+  position {
+    x: -136.0
+    y: 166.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "plataforma_sube2"
+  prototype: "/puzzles/saltar_plataformas_01/plataforma_sube.go"
+  position {
+    x: 122.0
+    y: 77.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "plataforma_sube"
+  prototype: "/puzzles/saltar_plataformas_01/plataforma_sube.go"
+  position {
+    x: -409.0
+    y: 166.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+scale_along_z: 0
