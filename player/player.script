@@ -64,7 +64,7 @@ function init(self)
 	self.direccion_donde_apunta_player = vmath.vector3()
 	self.ultima_direccion_donde_apunto_player = vmath.vector3(0, -1, 0)
 	self.ultima_plataforma_segura = vmath.vector3()
-	self.parado_sobre_vacio = 0
+	self.tiempo_parado_sobre_vacio = 0
 	--self.animacion_del_player = hash("player_abajo")
 	self.ultima_animacion = sprite_frente_idle
 
@@ -175,16 +175,20 @@ function update(self, dt)
 	-- 4) Restaurar la dirección del player para cuando ya deje de moverse.
 
 	if self.parado_sobre_vacio == true then
-		
-		if self.embistiendo == true or self.parado_sobre_plataforma == true then
-			return
-		else
-			-- usar esto para enviar al player a la ultima posicion segura
-			print(self.parado_sobre_plataforma)
+		self.tiempo_parado_sobre_vacio = self.tiempo_parado_sobre_vacio + 1
+		if self.parado_sobre_plataforma == true then 			--or self.embisitiendo
+
+			self.tiempo_parado_sobre_vacio = 0
+		elseif self.tiempo_parado_sobre_vacio >= 6 then
+		-- usar esto para enviar al player a la ultima posicion segura
+
+			--print(self.parado_sobre_plataforma)
 			local p = go.get_position()
 			go.set_position(vmath.vector3(self.ultima_plataforma_segura.x, self.ultima_plataforma_segura.y, p.z))
 			datos.parpadeo()
+			self.tiempo_parado_sobre_vacio = 0
 		end
+		print(self.tiempo_parado_sobre_vacio)
 	end
 end
 
@@ -204,16 +208,18 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("trigger_response") then
 		if message.enter == true and message.other_group == hash("plataforma") then
 			self.parado_sobre_plataforma = true
+			print("entrando a plataforma")
 		elseif message.enter == false and message.other_group == hash("plataforma") then
 			self.parado_sobre_plataforma = false
 		elseif message.enter == true and message.other_group == hash("vacio") then
 			self.parado_sobre_vacio = true
 		elseif message.enter == false and message.other_group == hash("vacio") then
 			self.parado_sobre_vacio = false
+			self.tiempo_parado_sobre_vacio = 0
 		elseif message.other_group == hash("camara") and message.enter == true then
 			pprint(message)
 		end
-		print(self.parado_sobre_plataforma)
+		--print(self.parado_sobre_plataforma)
 	elseif message_id == hash("rompible_destruido") then
 		self.objeto_destruido = true
 		self.velocidad_de_movimiento = self.velocidad_por_defecto 

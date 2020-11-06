@@ -1,7 +1,7 @@
 function init(self)
 	local p = go.get_position()
 	local new_p = vmath.vector3(p.x, p.y -100, p.z)
-	go.animate(".", "position", go.PLAYBACK_LOOP_PINGPONG, new_p, go.EASING_LINEAR, 5)
+	go.animate(".", "position", go.PLAYBACK_LOOP_PINGPONG, new_p, go.EASING_LINEAR, 2)
 end
 
 function final(self)
