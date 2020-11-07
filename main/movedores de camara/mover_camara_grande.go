@@ -1,6 +1,6 @@
 components {
-  id: "mover_camara_arriba"
-  component: "/main/mover_camara.script"
+  id: "mover_camara_grande"
+  component: "/main/movedores de camara/mover_camara_grande.script"
   position {
     x: 0.0
     y: 0.0
@@ -42,7 +42,7 @@ embedded_components {
   "    count: 3\n"
   "  }\n"
   "  data: 0.5\n"
-  "  data: 12.0\n"
+  "  data: 84.0\n"
   "  data: 10.0\n"
   "}\n"
   "linear_damping: 0.0\n"

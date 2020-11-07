@@ -1,6 +1,6 @@
 components {
-  id: "mover_camara_arriba"
-  component: "/main/mover_camara_x.script"
+  id: "mover_camara"
+  component: "/main/movedores de camara/mover_camara.script"
   position {
     x: 0.0
     y: 0.0
@@ -23,6 +23,7 @@ embedded_components {
   "restitution: 0.5\n"
   "group: \"camara\"\n"
   "mask: \"player\"\n"
+  "mask: \"roca\"\n"
   "embedded_collision_shape {\n"
   "  shapes {\n"
   "    shape_type: TYPE_BOX\n"

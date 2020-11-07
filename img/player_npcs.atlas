@@ -13,18 +13,6 @@ images {
 animations {
   id: "frente"
   images {
-    image: "/img/player/frente/frente2.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
-  }
-  images {
-    image: "/img/player/frente/frente3.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
-  }
-  images {
-    image: "/img/player/frente/frente4.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
-  }
-  images {
     image: "/img/player/frente/frente1.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
@@ -35,18 +23,6 @@ animations {
 }
 animations {
   id: "dorso"
-  images {
-    image: "/img/player/Dorso/dorso2.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
-  }
-  images {
-    image: "/img/player/Dorso/dorso3.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
-  }
-  images {
-    image: "/img/player/Dorso/dorso4.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
-  }
   images {
     image: "/img/player/Dorso/dorso1.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
@@ -81,18 +57,6 @@ animations {
 animations {
   id: "derecha"
   images {
-    image: "/img/player/derecha/derecha2.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
-  }
-  images {
-    image: "/img/player/derecha/derecha3.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
-  }
-  images {
-    image: "/img/player/derecha/derecha4.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
-  }
-  images {
     image: "/img/player/derecha/derecha1.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
@@ -114,18 +78,6 @@ animations {
 }
 animations {
   id: "izquierda"
-  images {
-    image: "/img/player/izquierda/izquierda2.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
-  }
-  images {
-    image: "/img/player/izquierda/izquierda3.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
-  }
-  images {
-    image: "/img/player/izquierda/izquierda4.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
-  }
   images {
     image: "/img/player/izquierda/izquierda1.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF

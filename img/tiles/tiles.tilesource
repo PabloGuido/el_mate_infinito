@@ -133,7 +133,7 @@ convex_hulls {
 convex_hulls {
   index: 149
   count: 4
-  collision_group: ""
+  collision_group: "pared"
 }
 convex_hulls {
   index: 153
