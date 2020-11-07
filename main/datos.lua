@@ -15,4 +15,6 @@ M.parpadeo = function ()
 	end)
 end
 
+M.velocidad_de_plataformas = 5
+
 return M

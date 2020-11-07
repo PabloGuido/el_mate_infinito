@@ -1,11 +1,11 @@
 -- Hay que hacer que las plataformas se muevan
 -- indefinidamente y que vayan y vengan rebotando contra 
 -- otro objeto. 
-
+local datos = require("main.datos")
 function init(self)
 	local p = go.get_position()
 	local new_p = vmath.vector3(p.x, p.y + 100, p.z)
-	go.animate(".", "position", go.PLAYBACK_LOOP_PINGPONG, new_p, go.EASING_LINEAR, 2)
+	go.animate(".", "position", go.PLAYBACK_LOOP_PINGPONG, new_p, go.EASING_LINEAR, datos.velocidad_de_plataformas)
 end
 
 function final(self)

@@ -25,7 +25,7 @@ instances {
   position {
     x: 0.0
     y: 0.0
-    z: 0.0
+    z: -0.5
   }
   rotation {
     x: 0.0
@@ -83,8 +83,8 @@ instances {
   id: "vacio"
   prototype: "/puzzles/saltar_plataformas_01/vacio.go"
   position {
-    x: 91.0
-    y: 130.0
+    x: 104.0
+    y: 117.0
     z: 0.0
   }
   rotation {
@@ -164,8 +164,8 @@ instances {
   id: "plataforma_baja"
   prototype: "/puzzles/saltar_plataformas_01/plataforma_baja.go"
   position {
-    x: 54.0
-    y: 167.0
+    x: 84.0
+    y: 149.0
     z: 0.0
   }
   rotation {
@@ -184,8 +184,8 @@ instances {
   id: "plataforma_sube"
   prototype: "/puzzles/saltar_plataformas_01/plataforma_sube.go"
   position {
-    x: 92.0
-    y: 76.0
+    x: 120.0
+    y: 60.0
     z: 0.0
   }
   rotation {
@@ -204,8 +204,8 @@ instances {
   id: "plataforma_baja1"
   prototype: "/puzzles/saltar_plataformas_01/plataforma_baja.go"
   position {
-    x: 134.0
-    y: 166.0
+    x: 155.0
+    y: 150.0
     z: 0.0
   }
   rotation {
