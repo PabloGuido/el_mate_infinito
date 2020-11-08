@@ -3,8 +3,8 @@ instances {
   id: "camera"
   prototype: "/orthographic/camera.go"
   position {
-    x: 1038.0
-    y: 1421.0
+    x: 108.0
+    y: 96.0
     z: 0.0
   }
   rotation {
@@ -64,9 +64,9 @@ instances {
   prototype: "/player/player.go"
   children: "charge"
   position {
-    x: 1012.0
-    y: 1388.0
-    z: 0.75
+    x: 108.0
+    y: 96.0
+    z: 0.9
   }
   rotation {
     x: 0.0
@@ -264,8 +264,8 @@ instances {
   id: "roca_rompible"
   prototype: "/objetos/roca_rompible.go"
   position {
-    x: 154.0
-    y: 696.0
+    x: 165.0
+    y: 688.0
     z: 0.0
   }
   rotation {
@@ -284,8 +284,8 @@ instances {
   id: "roca"
   prototype: "/puzzles/mover_rocas/roca.go"
   position {
-    x: 58.0
-    y: 671.0
+    x: 39.0
+    y: 665.0
     z: 0.0
   }
   rotation {
@@ -1081,26 +1081,6 @@ instances {
   }
 }
 instances {
-  id: "plataforma_segura11"
-  prototype: "/puzzles/saltar_plataformas_01/plataforma_segura.go"
-  position {
-    x: 684.0
-    y: 1518.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
   id: "mover_camara_grande15"
   prototype: "/main/movedores de camara/mover_camara_grande.go"
   position {
@@ -1204,9 +1184,9 @@ instances {
   id: "anciano"
   prototype: "/img/npc/anciano.go"
   position {
-    x: 1064.0
-    y: 1396.0
-    z: 1.0
+    x: -113.0
+    y: 299.0
+    z: 0.75
   }
   rotation {
     x: 0.0
@@ -1281,11 +1261,11 @@ instances {
   }
 }
 instances {
-  id: "tabaco1"
-  prototype: "/objetos/tabaco.go"
+  id: "gauchito"
+  prototype: "/img/npc/gauchito.go"
   position {
-    x: 1100.0
-    y: 1419.0
+    x: 327.0
+    y: 306.0
     z: 0.0
   }
   rotation {
@@ -1301,11 +1281,51 @@ instances {
   }
 }
 instances {
-  id: "vino1"
-  prototype: "/objetos/vino.go"
+  id: "cambiador_a_pantalla_final"
+  prototype: "/mapas/Bosque_principal/cambiador_a_pantalla_final.go"
   position {
-    x: 1009.0
-    y: 1432.0
+    x: 301.0
+    y: 699.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "roca1"
+  prototype: "/puzzles/mover_rocas/roca.go"
+  position {
+    x: 63.0
+    y: 679.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "roca_rompible1"
+  prototype: "/objetos/roca_rompible.go"
+  position {
+    x: 141.0
+    y: 703.0
     z: 0.0
   }
   rotation {

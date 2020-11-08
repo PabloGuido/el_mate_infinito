@@ -58,3 +58,18 @@ components {
     w: 1.0
   }
 }
+components {
+  id: "pantalla_final"
+  component: "/mapas/pantalla_final/pantalla_final.collectionproxy"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}

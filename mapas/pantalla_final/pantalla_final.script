@@ -1,0 +1,50 @@
+local url_de_camara = "/camera"
+function init(self)
+	self.label_text = "Has llegado al final de esta pequeña demo.\nGracias por jugar"
+	
+	msg.post(url_de_camara, "use_projection", { projection = hash("FIXED_AUTO") })
+	msg.post(url_de_camara, "zoom_to", {zoom = 3.5})
+
+	go.set("/mandinga#sprite", "tint.w", 0)
+	go.animate("/mandinga#sprite", "tint.w", go.PLAYBACK_ONCE_FORWARD, 1, go.EASING_LINEAR, 5,0, 
+	function()
+		label.set_text("/mandinga#label",self.label_text)
+	end
+	)
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	-- Add update code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+	-- Add message-handling code here
+	-- Learn more: https://defold.com/manuals/message-passing/
+	-- Remove this function if not needed
+end
+
+function on_input(self, action_id, action)
+	-- Add input-handling code here. The game object this script is attached to
+	-- must have acquired input focus:
+	--
+	--    msg.post(".", "acquire_input_focus")
+	--
+	-- All mapped input bindings will be received. Mouse and touch input will
+	-- be received regardless of where on the screen it happened.
+	-- Learn more: https://defold.com/manuals/input/
+	-- Remove this function if not needed
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Learn more: https://defold.com/manuals/hot-reload/
+	-- Remove this function if not needed
+end
