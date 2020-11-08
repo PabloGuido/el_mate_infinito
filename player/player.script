@@ -191,7 +191,7 @@ function update(self, dt)
 			parpadeo(self)
 			self.tiempo_parado_sobre_vacio = 0
 		end
-		print(self.tiempo_parado_sobre_vacio)
+		--print(self.tiempo_parado_sobre_vacio)
 	end
 end
 
@@ -205,8 +205,10 @@ function on_message(self, message_id, message, sender)
 		--elseif message.enter == true and message.other_group == hash("vacio") then
 			--self.parado_sobre_vacio = true
 		elseif message.enter == false and message.other_group == hash("vacio") then
-			self.parado_sobre_vacio = false
+			print("saliendo")
 			self.tiempo_parado_sobre_vacio = 0
+			self.parado_sobre_vacio = false
+			
 
 		elseif message.other_group == hash("camara") and message.enter == true then
 			pprint(message)
