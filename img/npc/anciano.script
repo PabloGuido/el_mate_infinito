@@ -1,0 +1,83 @@
+local inventario = require("main.inventario")
+local datos = require("main.datos")
+
+local function interactuar_con_gui (self)
+	if self.primera_vez_que_interactua == true then
+		msg.post("/gui#gui", "npc_enviando_info", {mision = self.mision, texto = self.texto_mision_1})
+		self.primera_vez_que_interactua = false
+		datos.player_puede_saltar = true
+	elseif self.primera_vez_que_interactua == false and self.mision_cumplida == "en_curso" then
+		msg.post("/gui#gui", "npc_enviando_info", {mision = self.mision, texto = self.texto_mision_2})
+	elseif self.primera_vez_que_interactua == false and inventario.ofrenda_del_anciano == true  then
+		msg.post("/gui#gui", "npc_enviando_info", {mision = self.mision, texto = self.texto_mision_4})
+	elseif self.primera_vez_que_interactua == false and self.mision_cumplida == "por_finalizar" then
+		msg.post("/gui#gui", "npc_enviando_info", {mision = self.mision, texto = self.texto_mision_3})
+		msg.post("#sprite1", "enable")
+		inventario.ofrenda_del_anciano = true
+
+	end
+end
+
+function init(self)
+	msg.post("#sprite1", "disable")
+	
+	self.primera_vez_que_interactua = true
+	self.mision_cumplida = "en_curso"
+	self.texto_mision_1 = {}
+	self.texto_mision_1[1] = "Oh bienaventurado...\n El Pombero se ha llevado a mi niñite"
+	self.texto_mision_1[2] = "Por favor, ayúdame a recuperarlo.\nYa no cuento con la destreza para tal hazaña"
+	self.texto_mision_1[3] = "Podríamos hacerlo desaparecer\n con algunas ofrendas..."
+	self.texto_mision_1[4] = "Aquí tienes estas botas, te permitirán saltar"
+	self.texto_mision_1[5] = "Presiona" .. " J " .. "para dar un salto corto,\n o manten presionado para saltar en largo."
+	
+	self.texto_mision_2 = {"Por favor, ayúdame a recuperarlo :("}
+	
+	self.texto_mision_3 = {}
+	self.texto_mision_3[1] = "Ohhh gracias por traer a mi bajite devuelta \n :D"
+	self.texto_mision_3[2] = "Toma esta ofrenda, puedes darsela a \n la estatua del gauchito"
+
+	self.texto_mision_4 = {":D \n Espero le hayas dado la ofrenda \n al gauchito"}
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	-- Add update code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("player_interactuando_con_objeto") then
+		--pprint(inventario)
+		if inventario.recuperaste_al_bajito == true then
+			self.mision_cumplida = "por_finalizar"
+		end
+		interactuar_con_gui (self)
+	elseif message_id == hash("objeto_recolectado_por_player") then
+		inventario[self.nombre_de_inventario] = self.objeto
+		go.delete()
+	end
+end
+
+function on_input(self, action_id, action)
+	-- Add input-handling code here. The game object this script is attached to
+	-- must have acquired input focus:
+	--
+	--    msg.post(".", "acquire_input_focus")
+	--
+	-- All mapped input bindings will be received. Mouse and touch input will
+	-- be received regardless of where on the screen it happened.
+	-- Learn more: https://defold.com/manuals/input/
+	-- Remove this function if not needed
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Learn more: https://defold.com/manuals/hot-reload/
+	-- Remove this function if not needed
+end

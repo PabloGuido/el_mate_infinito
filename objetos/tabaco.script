@@ -7,8 +7,7 @@ end
 
 function init(self)
 	self.recolectable = true
-	self.objeto = "una carta"
-	self.nombre_de_inventario = "Carta"
+	self.objeto = {"Recolectaste tabaco."}
 end
 
 function final(self)
@@ -25,10 +24,9 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("player_interactuando_con_objeto") then
-		--print("player interact con " ..  go.get_id())
 		interactuar_con_gui (self)
 	elseif message_id == hash("objeto_recolectado_por_player") then
-		inventario[self.nombre_de_inventario] = self.objeto
+		inventario.ofrenda_pombero_2 = true
 		go.delete()
 	end
 end

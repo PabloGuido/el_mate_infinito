@@ -3,8 +3,8 @@ instances {
   id: "camera"
   prototype: "/orthographic/camera.go"
   position {
-    x: 977.0
-    y: 1443.0
+    x: 1038.0
+    y: 1421.0
     z: 0.0
   }
   rotation {
@@ -64,8 +64,8 @@ instances {
   prototype: "/player/player.go"
   children: "charge"
   position {
-    x: 1020.0
-    y: 1402.0
+    x: 1012.0
+    y: 1388.0
     z: 0.75
   }
   rotation {
@@ -1182,10 +1182,130 @@ instances {
 }
 instances {
   id: "bajito"
-  prototype: "/img/npc/bajito.go"
+  prototype: "/objetos/bajito.go"
   position {
     x: 1012.0
     y: 1508.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "anciano"
+  prototype: "/img/npc/anciano.go"
+  position {
+    x: 1064.0
+    y: 1396.0
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "gui"
+  prototype: "/main/gui.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "vino"
+  prototype: "/objetos/vino.go"
+  position {
+    x: 36.0
+    y: 1452.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "tabaco"
+  prototype: "/objetos/tabaco.go"
+  position {
+    x: 461.0
+    y: 1716.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "tabaco1"
+  prototype: "/objetos/tabaco.go"
+  position {
+    x: 1100.0
+    y: 1419.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "vino1"
+  prototype: "/objetos/vino.go"
+  position {
+    x: 1009.0
+    y: 1432.0
     z: 0.0
   }
   rotation {

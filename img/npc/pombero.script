@@ -1,7 +1,21 @@
+local inventario = require("main.inventario")
+local datos = require("main.datos")
+
+local function interactuar_con_gui (self)
+	if  self.mision_cumplida == false then
+		msg.post("/gui#gui", "npc_enviando_info", {mision = self.mision, texto = self.texto_mision_1})
+	elseif self.mision_cumplida == true then
+		msg.post("/gui#gui", "npc_enviando_info", {mision = self.mision, texto = self.texto_mision_2})
+	end
+end
+
 function init(self)
-	-- Add initialization code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
+	self.primera_vez_que_interactua = true
+	self.mision_cumplida = false
+	self.texto_mision_1 = {"Solo me moveré de aquí con \n  tabaco y alcohol en mis manos."}
+	self.texto_mision_2 = {}
+	self.texto_mision_2[1] = "Tabaco y alcohol... eh...\n Muy bien, esto bastará por ahora..."
+	self.texto_mision_2[2] = "desaparecer"
 end
 
 function final(self)
@@ -17,9 +31,17 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-	-- Add message-handling code here
-	-- Learn more: https://defold.com/manuals/message-passing/
-	-- Remove this function if not needed
+	if message_id == hash("player_interactuando_con_objeto") then
+		--pprint(inventario)
+		if inventario.ofrenda_pombero_1 == true and inventario.ofrenda_pombero_2 == true then
+			self.mision_cumplida = true
+		end
+		interactuar_con_gui (self)
+
+	elseif message_id == hash("desaparecer") then
+		go.animate("#sprite", "tint.w", go.PLAYBACK_ONCE_FORWARD, 0, go.EASING_LINEAR, 1, 0, function() go.delete() end)
+		--go.animate(url, property, playback, to, easing, duration)
+	end
 end
 
 function on_input(self, action_id, action)

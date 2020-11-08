@@ -1,6 +1,6 @@
 components {
-  id: "carta"
-  component: "/objetos/carta.script"
+  id: "anciano"
+  component: "/img/npc/anciano.script"
   position {
     x: 0.0
     y: 0.0
@@ -16,8 +16,8 @@ components {
 embedded_components {
   id: "sprite"
   type: "sprite"
-  data: "tile_set: \"/img/objetos.atlas\"\n"
-  "default_animation: \"carta\"\n"
+  data: "tile_set: \"/img/player_npcs.atlas\"\n"
+  "default_animation: \"anciano\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""
@@ -60,8 +60,8 @@ embedded_components {
   "    index: 0\n"
   "    count: 3\n"
   "  }\n"
-  "  data: 32.0\n"
-  "  data: 32.0\n"
+  "  data: 24.5335\n"
+  "  data: 24.465\n"
   "  data: 10.0\n"
   "}\n"
   "linear_damping: 0.0\n"
@@ -72,6 +72,26 @@ embedded_components {
     x: 0.0
     y: 0.0
     z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "sprite1"
+  type: "sprite"
+  data: "tile_set: \"/img/player_npcs.atlas\"\n"
+  "default_animation: \"bajito\"\n"
+  "material: \"/builtins/materials/sprite.material\"\n"
+  "blend_mode: BLEND_MODE_ALPHA\n"
+  ""
+  position {
+    x: 12.0
+    y: -13.0
+    z: -0.1
   }
   rotation {
     x: 0.0

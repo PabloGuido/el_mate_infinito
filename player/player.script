@@ -48,14 +48,19 @@ local function mover_camara (otro_objeto, otro_posicion, normal)
 end
 
 local function parpadeo (self)
-	local p = go.get_position()
-	go.set_position(vmath.vector3(self.ultima_plataforma_segura.x, self.ultima_plataforma_segura.y, p.z))
-	self.parado_sobre_vacio = false
-	go.set("#sprite", "tint.w", 0)
-	go.animate("#sprite", "tint.w", go.PLAYBACK_LOOP_FORWARD, 1, go.EASING_LINEAR, 0.2)
-	timer.delay(1, false, function()
-		go.animate("#sprite", "tint.w", go.PLAYBACK_ONCE_FORWARD, 1, go.EASING_LINEAR, 0.2)
-	end)
+	--if self.tiempo_parado_sobre_vacio >= 1 then
+		msg.post(".", "release_input_focus")
+		local p = go.get_position()
+		go.set_position(vmath.vector3(self.ultima_plataforma_segura.x, self.ultima_plataforma_segura.y, p.z))
+		self.parado_sobre_vacio = false
+		self.tiempo_parado_sobre_vacio = 0
+		go.set("#sprite", "tint.w", 0)
+		msg.post(".", "acquire_input_focus")
+		go.animate("#sprite", "tint.w", go.PLAYBACK_LOOP_FORWARD, 1, go.EASING_LINEAR, 0.2)
+		timer.delay(1, false, function()
+			go.animate("#sprite", "tint.w", go.PLAYBACK_ONCE_FORWARD, 1, go.EASING_LINEAR, 0.2)
+		end)
+	--end
 end
 
 local function draw_line(from, to)
@@ -189,9 +194,9 @@ function update(self, dt)
 		elseif self.tiempo_parado_sobre_vacio >= 8 then
 			-- usar esto para enviar al player a la ultima posicion segura
 			parpadeo(self)
-			self.tiempo_parado_sobre_vacio = 0
 		end
 		--print(self.tiempo_parado_sobre_vacio)
+		self.parado_sobre_vacio = false
 	end
 end
 
@@ -202,14 +207,14 @@ function on_message(self, message_id, message, sender)
 			self.parado_sobre_plataforma = true
 		elseif message.enter == false and message.other_group == hash("plataforma") then
 			self.parado_sobre_plataforma = false
-		--elseif message.enter == true and message.other_group == hash("vacio") then
+	--[[
+		elseif message.other_group == hash("vacio") and message.enter then
 			--self.parado_sobre_vacio = true
-		elseif message.enter == false and message.other_group == hash("vacio") then
-			print("saliendo")
-			self.tiempo_parado_sobre_vacio = 0
-			self.parado_sobre_vacio = false
-			
-
+		elseif message.other_group == hash("vacio") and message.enter == false then
+			--print("saliendo")
+			--self.tiempo_parado_sobre_vacio = 0
+			--self.parado_sobre_vacio = false
+	]]
 		elseif message.other_group == hash("camara") and message.enter == true then
 			pprint(message)
 		end
@@ -218,6 +223,9 @@ function on_message(self, message_id, message, sender)
 		if message.other_group == hash("pared") then
 			local newpos = go.get_position() + message.normal * message.distance
 			go.set_position(newpos)
+		elseif message.other_group == hash("objeto") then
+				local newpos = go.get_position() + message.normal * message.distance
+				go.set_position(newpos)
 		elseif message.other_group == hash("roca") then
 			local newpos = go.get_position() + message.normal * message.distance
 			go.set_position(newpos)

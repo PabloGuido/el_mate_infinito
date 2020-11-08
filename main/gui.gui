@@ -3,6 +3,10 @@ fonts {
   name: "system_font"
   font: "/builtins/fonts/system_font.font"
 }
+fonts {
+  name: "nueva_font"
+  font: "/main/nueva_font.font"
+}
 background_color {
   x: 0.0
   y: 0.0
@@ -97,7 +101,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "..."
-  font: "system_font"
+  font: "nueva_font"
   id: "texto"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

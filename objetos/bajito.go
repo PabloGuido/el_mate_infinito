@@ -1,6 +1,6 @@
 components {
-  id: "pombero"
-  component: "/img/npc/pombero.script"
+  id: "bajito"
+  component: "/objetos/bajito.script"
   position {
     x: 0.0
     y: 0.0
@@ -17,12 +17,32 @@ embedded_components {
   id: "sprite"
   type: "sprite"
   data: "tile_set: \"/img/player_npcs.atlas\"\n"
-  "default_animation: \"pombero\"\n"
+  "default_animation: \"bajito\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""
   position {
     x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "sprite1"
+  type: "sprite"
+  data: "tile_set: \"/img/objetos.atlas\"\n"
+  "default_animation: \"bombilla\"\n"
+  "material: \"/builtins/materials/sprite.material\"\n"
+  "blend_mode: BLEND_MODE_ALPHA\n"
+  ""
+  position {
+    x: -26.0
     y: 0.0
     z: 0.0
   }
@@ -60,7 +80,7 @@ embedded_components {
   "    index: 0\n"
   "    count: 1\n"
   "  }\n"
-  "  data: 34.754\n"
+  "  data: 10.0\n"
   "}\n"
   "linear_damping: 0.0\n"
   "angular_damping: 0.0\n"

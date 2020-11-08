@@ -1,6 +1,6 @@
 components {
-  id: "toy"
-  component: "/objetos/toy.script"
+  id: "tabaco"
+  component: "/objetos/tabaco.script"
   position {
     x: 0.0
     y: 0.0
@@ -17,7 +17,7 @@ embedded_components {
   id: "sprite"
   type: "sprite"
   data: "tile_set: \"/img/objetos.atlas\"\n"
-  "default_animation: \"toy\"\n"
+  "default_animation: \"tabaco\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""
@@ -60,8 +60,8 @@ embedded_components {
   "    index: 0\n"
   "    count: 3\n"
   "  }\n"
-  "  data: 32.0\n"
-  "  data: 32.0\n"
+  "  data: 8.0\n"
+  "  data: 11.0\n"
   "  data: 10.0\n"
   "}\n"
   "linear_damping: 0.0\n"

@@ -7,8 +7,7 @@ end
 
 function init(self)
 	self.recolectable = true
-	self.objeto = "un munieco maldito prro (?"
-	self.nombre_de_inventario = "Munieco maldito"
+	self.objeto = {"Recueperaste al bajito, vuélvelo a su casa. \n También te encuentras con \n 'La Bomibilla del Infinito'"}
 end
 
 function final(self)
@@ -25,10 +24,10 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("player_interactuando_con_objeto") then
-		--print("player interact con " ..  go.get_id())
 		interactuar_con_gui (self)
 	elseif message_id == hash("objeto_recolectado_por_player") then
-		inventario[self.nombre_de_inventario] = self.objeto
+		inventario.recuperaste_al_bajito = true
+		inventario.bombilla_del_infinito = true
 		go.delete()
 	end
 end

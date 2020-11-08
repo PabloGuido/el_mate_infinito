@@ -35,7 +35,15 @@ images {
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/img/tiles/sprites finales/bombilla.png"
+  image: "/img/obj_sprites/bombilla.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
+images {
+  image: "/img/obj_sprites/vino.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
+images {
+  image: "/img/obj_sprites/tabaco.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 margin: 0

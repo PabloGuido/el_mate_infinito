@@ -18,6 +18,10 @@ images {
   image: "/img/npc/bajito.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
+images {
+  image: "/img/npc/anciano.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
 animations {
   id: "frente"
   images {

@@ -1,9 +1,36 @@
+local function termina_conversacion (self)
+	msg.post(".", "release_input_focus")
+	msg.post(".", "disable")
+	msg.post("/player", "player_recobra_input")
+	self.caja_de_texto = ""
+	self.numero_de_linea = 0
+	self.nombre_del_npc_interactuando = ""
+end
+
+local function mostrar_texto_en_pantalla (self)
+	self.numero_de_linea = self.numero_de_linea + 1
+
+	if self.numero_de_linea > table.maxn(self.caja_de_texto) then
+		termina_conversacion (self)
+	elseif self.caja_de_texto[self.numero_de_linea] == "desaparecer" then
+		msg.post(self.nombre_del_npc_interactuando, "desaparecer")
+		mostrar_texto_en_pantalla (self)
+	else
+		gui.set_text(self.texto, self.caja_de_texto[self.numero_de_linea])
+	end
+end
+
 
 
 function init(self)
 	self.caja_de_texto = gui.get_node("caja_de_texto")
 	self.texto = gui.get_node("texto")
 	msg.post(".", "disable")
+
+	self.caja_de_texto = ""
+	self.numero_de_linea = 0
+
+	self.nombre_del_npc_interactuando = ""
 end
 
 function final(self)
@@ -21,25 +48,32 @@ end
 function on_message(self, message_id, message, sender)
 	if message_id == hash("objeto_enviando_info")then
 		--pprint(message)
+		self.caja_de_texto = message.objeto
 		if message.recolectable == true then
 			msg.post(".", "acquire_input_focus")
 			msg.post(".", "enable")
-			gui.set_text(self.texto, "Recolectaste " .. message.objeto)
+
+			mostrar_texto_en_pantalla (self)
 			msg.post(sender, "objeto_recolectado_por_player")
 			
 		else
 			msg.post(".", "acquire_input_focus")
 			msg.post(".", "enable")
-			gui.set_text(self.texto, "Esto es " .. message.objeto)
+			mostrar_texto_en_pantalla (self)
 		end
+	elseif message_id == hash("npc_enviando_info")then
+		--pprint(message)
+		self.nombre_del_npc_interactuando = sender
+		self.caja_de_texto = message.texto
+		msg.post(".", "acquire_input_focus")
+		msg.post(".", "enable")
+		mostrar_texto_en_pantalla (self)
 	end
 end
 
 function on_input(self, action_id, action)
 	if action_id == hash("accion") and action.pressed then
-		msg.post(".", "release_input_focus")
-		msg.post(".", "disable")
-		msg.post("/player", "player_recobra_input")
+		mostrar_texto_en_pantalla (self)
 	end
 end
 
