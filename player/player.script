@@ -30,7 +30,7 @@ local function mensaje_camera_seguir_player ()
 end
 
 -- función para mover la cámara en el mapa.
-local test = false
+local camara_moviendose = false
 local function mover_camara (otro_objeto, otro_posicion, normal)
 	local mover_x = 216
 	local mover_y = 192
@@ -42,21 +42,27 @@ local function mover_camara (otro_objeto, otro_posicion, normal)
 	local posicion_de_la_camara = go.get_position(url_de_camara)
 
 	go.set_position(vmath.vector3(posicion_de_la_camara.x - colision_normal.x * mover_x, posicion_de_la_camara.y - colision_normal.y * mover_y, posicion_de_la_camara.z) ,url_de_camara)
-	--print(objeto_de_transicion)
-
-	--go.set_position(vmath.vector3(posicion_objeto_de_transicion.x + colision_normal.x * mover_objeto_de_transicion, posicion_objeto_de_transicion.y + colision_normal.y * mover_objeto_de_transicion, posicion_objeto_de_transicion.z), objeto_de_transicion)
-	--test = false
-	--timer.delay(1, false, function() test = false end)
 	local p = go.get_position()
 	local new_p = vmath.vector3(p.x - colision_normal.x * 18, p.y - colision_normal.y * 18, p.z)
-	go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, new_p, go.EASING_LINEAR, 0.25, 0, function() test = false end)
+	go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, new_p, go.EASING_LINEAR, 0.25, 0, function() camara_moviendose = false end)
+end
+
+local function parpadeo (self)
+	local p = go.get_position()
+	go.set_position(vmath.vector3(self.ultima_plataforma_segura.x, self.ultima_plataforma_segura.y, p.z))
+	self.parado_sobre_vacio = false
+	go.set("#sprite", "tint.w", 0)
+	go.animate("#sprite", "tint.w", go.PLAYBACK_LOOP_FORWARD, 1, go.EASING_LINEAR, 0.2)
+	timer.delay(1, false, function()
+		go.animate("#sprite", "tint.w", go.PLAYBACK_ONCE_FORWARD, 1, go.EASING_LINEAR, 0.2)
+	end)
 end
 
 local function draw_line(from, to)
 	msg.post("@render:", "draw_line", { start_point = from, end_point = to, color = vmath.vector4(1,0,0,1) })
 end
 
-function init(self)	
+function init(self)
 	print("Inicializando player")
 	-- Variables para la velocidad y dirección donde apunta el player.
 	self.velocidad_por_defecto = 50
@@ -104,9 +110,6 @@ function init(self)
 		-- cambiar los primeros dos ceros por el tiempo que haga falta para arrancar nuevo mapa
 		go.animate("#sprite", "tint.w", go.PLAYBACK_ONCE_FORWARD, 1, go.EASING_LINEAR, 0.5, 0.1,function() msg.post(".", "acquire_input_focus") end)
 	end
-
-
-	--msg.post(".", "acquire_input_focus") -- habilitar input
 
 end
 
@@ -182,23 +185,34 @@ function update(self, dt)
 	if self.parado_sobre_vacio == true then
 		self.tiempo_parado_sobre_vacio = self.tiempo_parado_sobre_vacio + 1
 		if self.parado_sobre_plataforma == true then 
-
 			self.tiempo_parado_sobre_vacio = 0
-		elseif self.tiempo_parado_sobre_vacio >= 6 then
+		elseif self.tiempo_parado_sobre_vacio >= 8 then
 			-- usar esto para enviar al player a la ultima posicion segura
-			--msg.post(".", "release_input_focus")
-			--local p = go.get_position()			
-			--go.set_position(vmath.vector3(self.ultima_plataforma_segura.x, self.ultima_plataforma_segura.y, p.z))
-			datos.parpadeo(self)
-			
+			parpadeo(self)
 			self.tiempo_parado_sobre_vacio = 0
 		end
+		print(self.tiempo_parado_sobre_vacio)
 	end
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id == hash("contact_point_response") then
-		-- cálculo para resolver la colision del player con las paredes.
+
+	if message_id == hash("trigger_response") then
+		if message.enter == true and message.other_group == hash("plataforma") then
+			self.parado_sobre_plataforma = true
+		elseif message.enter == false and message.other_group == hash("plataforma") then
+			self.parado_sobre_plataforma = false
+		--elseif message.enter == true and message.other_group == hash("vacio") then
+			--self.parado_sobre_vacio = true
+		elseif message.enter == false and message.other_group == hash("vacio") then
+			self.parado_sobre_vacio = false
+			self.tiempo_parado_sobre_vacio = 0
+
+		elseif message.other_group == hash("camara") and message.enter == true then
+			pprint(message)
+		end
+	elseif message_id == hash("contact_point_response") then
+		-- cálculo para resolver la colision del player con las paredes y rocas.
 		if message.other_group == hash("pared") then
 			local newpos = go.get_position() + message.normal * message.distance
 			go.set_position(newpos)
@@ -208,29 +222,16 @@ function on_message(self, message_id, message, sender)
 		elseif	message.other_group == hash("rompible") then
 			local newpos = go.get_position() + message.normal * message.distance
 			go.set_position(newpos)
+		elseif message.other_group == hash("vacio") then
+			self.parado_sobre_vacio = true
 		elseif message.other_group == hash("camara") then
-			--pprint(message)
-			if test == false then
-				test = true
+			if camara_moviendose == false then
+				camara_moviendose = true
 				mover_camara (message.other_id, message.other_position, message.normal)
 			end
 		
 		end
-	elseif message_id == hash("trigger_response") then
-		if message.enter == true and message.other_group == hash("plataforma") then
-			self.parado_sobre_plataforma = true
-		elseif message.enter == false and message.other_group == hash("plataforma") then
-			self.parado_sobre_plataforma = false
 
-		elseif message.enter == true and message.other_group == hash("vacio") then
-			self.parado_sobre_vacio = true
-		elseif message.enter == false and message.other_group == hash("vacio") then
-			self.parado_sobre_vacio = false
-			self.tiempo_parado_sobre_vacio = 0
-
-		elseif message.other_group == hash("camara") and message.enter == true then
-			pprint(message)
-		end
 	elseif message_id == hash("rompible_responde") then
 		self.objeto_destruido = true
 		self.velocidad_de_movimiento = self.velocidad_por_defecto 

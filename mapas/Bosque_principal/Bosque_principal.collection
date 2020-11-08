@@ -4,7 +4,7 @@ instances {
   prototype: "/orthographic/camera.go"
   position {
     x: 108.0
-    y: 96.0
+    y: 1632.0
     z: 0.0
   }
   rotation {
@@ -64,8 +64,8 @@ instances {
   prototype: "/player/player.go"
   children: "charge"
   position {
-    x: 108.0
-    y: 59.0
+    x: 260.0
+    y: 1609.0
     z: 0.75
   }
   rotation {
@@ -301,11 +301,31 @@ instances {
   }
 }
 instances {
-  id: "roca1"
-  prototype: "/puzzles/mover_rocas/roca.go"
+  id: "mover_camara_grande8"
+  prototype: "/main/movedores de camara/mover_camara_grande.go"
   position {
-    x: 105.0
-    y: 119.0
+    x: 110.0
+    y: 960.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.70710677
+    w: 0.70710677
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "plataforma_segura1"
+  prototype: "/puzzles/saltar_plataformas_01/plataforma_segura.go"
+  position {
+    x: 108.0
+    y: 987.0
     z: 0.0
   }
   rotation {
@@ -321,11 +341,531 @@ instances {
   }
 }
 instances {
-  id: "roca_rompible1"
-  prototype: "/objetos/roca_rompible.go"
+  id: "plataforma_derecha"
+  prototype: "/puzzles/saltar_plataformas_01/plataforma_derecha.go"
   position {
-    x: 150.0
-    y: 110.0
+    x: 30.0
+    y: 1057.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "pared_para_plataformas"
+  prototype: "/puzzles/saltar_plataformas_01/pared_para_plataformas.go"
+  position {
+    x: 14.0
+    y: 1057.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.70710677
+    w: 0.70710677
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "pared_para_plataformas1"
+  prototype: "/puzzles/saltar_plataformas_01/pared_para_plataformas.go"
+  position {
+    x: 204.0
+    y: 1057.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.70710677
+    w: 0.70710677
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "mover_camara_grande9"
+  prototype: "/main/movedores de camara/mover_camara_grande.go"
+  position {
+    x: 109.0
+    y: 1152.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.70710677
+    w: 0.70710677
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "plataforma_segura2"
+  prototype: "/puzzles/saltar_plataformas_01/plataforma_segura.go"
+  position {
+    x: 108.0
+    y: 1140.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "plataforma_segura3"
+  prototype: "/puzzles/saltar_plataformas_01/plataforma_segura.go"
+  position {
+    x: 108.0
+    y: 1180.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "pared_para_plataformas2"
+  prototype: "/puzzles/saltar_plataformas_01/pared_para_plataformas.go"
+  position {
+    x: 15.0
+    y: 1261.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.70710677
+    w: 0.70710677
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "pared_para_plataformas3"
+  prototype: "/puzzles/saltar_plataformas_01/pared_para_plataformas.go"
+  position {
+    x: 203.0
+    y: 1261.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.70710677
+    w: 0.70710677
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "plataforma_derecha1"
+  prototype: "/puzzles/saltar_plataformas_01/plataforma_derecha.go"
+  position {
+    x: 108.0
+    y: 1246.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "plataforma_izquierda"
+  prototype: "/puzzles/saltar_plataformas_01/plataforma_izquierda.go"
+  position {
+    x: 108.0
+    y: 1276.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "plataforma_segura4"
+  prototype: "/puzzles/saltar_plataformas_01/plataforma_segura.go"
+  position {
+    x: 108.0
+    y: 1330.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "mover_camara_grande10"
+  prototype: "/main/movedores de camara/mover_camara_grande.go"
+  position {
+    x: 109.0
+    y: 1345.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.70710677
+    w: 0.70710677
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "plataforma_segura6"
+  prototype: "/puzzles/saltar_plataformas_01/plataforma_segura.go"
+  position {
+    x: 179.0
+    y: 1500.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "plataforma_derecha2"
+  prototype: "/puzzles/saltar_plataformas_01/plataforma_derecha.go"
+  position {
+    x: 110.0
+    y: 1414.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "pared_para_plataformas4"
+  prototype: "/puzzles/saltar_plataformas_01/pared_para_plataformas.go"
+  position {
+    x: 15.0
+    y: 1415.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.70710677
+    w: 0.70710677
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "pared_para_plataformas5"
+  prototype: "/puzzles/saltar_plataformas_01/pared_para_plataformas.go"
+  position {
+    x: 205.0
+    y: 1417.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.70710677
+    w: 0.70710677
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "plataforma_segura7"
+  prototype: "/puzzles/saltar_plataformas_01/plataforma_segura.go"
+  position {
+    x: 107.0
+    y: 1361.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "pared_para_plataformas6"
+  prototype: "/puzzles/saltar_plataformas_01/pared_para_plataformas.go"
+  position {
+    x: 145.0
+    y: 1475.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.70710677
+    w: 0.70710677
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "pared_para_plataformas7"
+  prototype: "/puzzles/saltar_plataformas_01/pared_para_plataformas.go"
+  position {
+    x: 206.0
+    y: 1476.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.70710677
+    w: 0.70710677
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "plataforma_derecha3"
+  prototype: "/puzzles/saltar_plataformas_01/plataforma_derecha.go"
+  position {
+    x: 179.0
+    y: 1474.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "mover_camara_grande11"
+  prototype: "/main/movedores de camara/mover_camara_grande.go"
+  position {
+    x: 117.0
+    y: 1537.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.70710677
+    w: 0.70710677
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "mover_camara_grande12"
+  prototype: "/main/movedores de camara/mover_camara_grande.go"
+  position {
+    x: 285.0
+    y: 1604.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "plataforma_segura5"
+  prototype: "/puzzles/saltar_plataformas_01/plataforma_segura.go"
+  position {
+    x: 300.0
+    y: 1608.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "plataforma_segura8"
+  prototype: "/puzzles/saltar_plataformas_01/plataforma_segura.go"
+  position {
+    x: 399.0
+    y: 1644.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "plataforma_sube"
+  prototype: "/puzzles/saltar_plataformas_01/plataforma_sube.go"
+  position {
+    x: 347.0
+    y: 1612.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "pared_para_plataformas8"
+  prototype: "/puzzles/saltar_plataformas_01/pared_para_plataformas.go"
+  position {
+    x: 347.0
+    y: 1590.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "pared_para_plataformas9"
+  prototype: "/puzzles/saltar_plataformas_01/pared_para_plataformas.go"
+  position {
+    x: 347.0
+    y: 1725.0
     z: 0.0
   }
   rotation {
@@ -345,12 +885,17 @@ embedded_instances {
   id: "movedores_de_camara"
   children: "mover_camara_grande"
   children: "mover_camara_grande1"
+  children: "mover_camara_grande10"
+  children: "mover_camara_grande11"
+  children: "mover_camara_grande12"
   children: "mover_camara_grande2"
   children: "mover_camara_grande3"
   children: "mover_camara_grande4"
   children: "mover_camara_grande5"
   children: "mover_camara_grande6"
   children: "mover_camara_grande7"
+  children: "mover_camara_grande8"
+  children: "mover_camara_grande9"
   data: ""
   position {
     x: 0.0
