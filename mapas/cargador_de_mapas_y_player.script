@@ -1,8 +1,9 @@
 function init(self)
 	--print(msg.url())
 	msg.post(".", "acquire_input_focus")
-	--msg.post("#pantalla_intro", "load")
 	msg.post("#Bosque_principal", "load")
+	
+	--msg.post("#Bosque_principal", "load")
 	self.proximo_mapa_a_cargar = ""
 end
 

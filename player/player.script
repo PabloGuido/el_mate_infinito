@@ -180,15 +180,16 @@ function update(self, dt)
 
 	if self.parado_sobre_vacio == true then
 		self.tiempo_parado_sobre_vacio = self.tiempo_parado_sobre_vacio + 1
-		if self.parado_sobre_plataforma == true then 			--or self.embisitiendo
+		if self.parado_sobre_plataforma == true then 
 
 			self.tiempo_parado_sobre_vacio = 0
 		elseif self.tiempo_parado_sobre_vacio >= 6 then
-		-- usar esto para enviar al player a la ultima posicion segura
-			local p = go.get_position()
-			go.set_position(vmath.vector3(self.ultima_plataforma_segura.x, self.ultima_plataforma_segura.y, p.z))
-			datos.parpadeo()
-			self.embistiendo = false
+			-- usar esto para enviar al player a la ultima posicion segura
+			--msg.post(".", "release_input_focus")
+			--local p = go.get_position()			
+			--go.set_position(vmath.vector3(self.ultima_plataforma_segura.x, self.ultima_plataforma_segura.y, p.z))
+			datos.parpadeo(self)
+			
 			self.tiempo_parado_sobre_vacio = 0
 		end
 	end
@@ -206,17 +207,20 @@ function on_message(self, message_id, message, sender)
 				test = true
 				mover_camara (message.other_id, message.other_position, message.normal)
 			end
+		
 		end
 	elseif message_id == hash("trigger_response") then
 		if message.enter == true and message.other_group == hash("plataforma") then
 			self.parado_sobre_plataforma = true
 		elseif message.enter == false and message.other_group == hash("plataforma") then
 			self.parado_sobre_plataforma = false
+
 		elseif message.enter == true and message.other_group == hash("vacio") then
 			self.parado_sobre_vacio = true
 		elseif message.enter == false and message.other_group == hash("vacio") then
 			self.parado_sobre_vacio = false
 			self.tiempo_parado_sobre_vacio = 0
+
 		elseif message.other_group == hash("camara") and message.enter == true then
 			pprint(message)
 		end

@@ -5,16 +5,16 @@ M.url_del_player = "player/player#player"
 M.player_puede_mover_rocas = true
 M.ultima_plataforma_segura = ""
 
-M.parpadeo = function ()
-	msg.post(".", "release_input_focus")
+M.parpadeo = function (self)
+	local p = go.get_position()
+	go.set_position(vmath.vector3(self.ultima_plataforma_segura.x, self.ultima_plataforma_segura.y, p.z))
 	go.set("#sprite", "tint.w", 0)
 	go.animate("#sprite", "tint.w", go.PLAYBACK_LOOP_FORWARD, 1, go.EASING_LINEAR, 0.2)
 	timer.delay(1, false, function()
 		go.animate("#sprite", "tint.w", go.PLAYBACK_ONCE_FORWARD, 1, go.EASING_LINEAR, 0.2)
-		msg.post(".", "acquire_input_focus")
 	end)
 end
 
-M.velocidad_de_plataformas = 5
+M.velocidad_de_plataformas = 100
 
 return M

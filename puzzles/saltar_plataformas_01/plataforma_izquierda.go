@@ -1,6 +1,6 @@
 components {
-  id: "plataforma"
-  component: "/puzzles/saltar_plataformas_01/plataforma_sube.script"
+  id: "plataforma_izquierda"
+  component: "/puzzles/saltar_plataformas_01/plataforma_izquierda.script"
   position {
     x: 0.0
     y: 0.0

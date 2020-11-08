@@ -40,71 +40,11 @@ instances {
   }
 }
 instances {
-  id: "mover_camara"
-  prototype: "/main/movedores de camara/mover_camara.go"
-  position {
-    x: 108.0
-    y: 192.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.70710677
-    w: 0.70710677
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "mover_camara1"
-  prototype: "/main/movedores de camara/mover_camara.go"
-  position {
-    x: 217.0
-    y: 300.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "vacio"
-  prototype: "/puzzles/saltar_plataformas_01/vacio.go"
-  position {
-    x: 104.0
-    y: 117.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 0.1
-    y: 0.1
-    z: 1.0
-  }
-}
-instances {
   id: "plataforma_segura"
   prototype: "/puzzles/saltar_plataformas_01/plataforma_segura.go"
   position {
-    x: 109.0
-    y: 28.0
+    x: 32.0
+    y: 23.0
     z: 0.0
   }
   rotation {
@@ -124,8 +64,8 @@ instances {
   prototype: "/player/player.go"
   children: "charge"
   position {
-    x: 109.0
-    y: 28.0
+    x: 38.0
+    y: 24.0
     z: 1.0
   }
   rotation {
@@ -153,106 +93,6 @@ instances {
     y: 0.0
     z: 0.0
     w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "plataforma_baja"
-  prototype: "/puzzles/saltar_plataformas_01/plataforma_baja.go"
-  position {
-    x: 84.0
-    y: 149.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "plataforma_sube"
-  prototype: "/puzzles/saltar_plataformas_01/plataforma_sube.go"
-  position {
-    x: 120.0
-    y: 60.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "plataforma_baja1"
-  prototype: "/puzzles/saltar_plataformas_01/plataforma_baja.go"
-  position {
-    x: 155.0
-    y: 150.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "mover_camara_grande"
-  prototype: "/main/movedores de camara/mover_camara_grande.go"
-  position {
-    x: 217.0
-    y: 85.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "mover_camara_grande1"
-  prototype: "/main/movedores de camara/mover_camara_grande.go"
-  position {
-    x: 324.0
-    y: 192.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.70710677
-    w: 0.70710677
   }
   scale3 {
     x: 1.0

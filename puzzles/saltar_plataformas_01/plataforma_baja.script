@@ -1,8 +1,10 @@
 local datos = require("main.datos")
+
 function init(self)
-	local p = go.get_position()
-	local new_p = vmath.vector3(p.x, p.y -100, p.z)
-	go.animate(".", "position", go.PLAYBACK_LOOP_PINGPONG, new_p, go.EASING_LINEAR, datos.velocidad_de_plataformas)
+	self.posicion = go.get_position()
+	self.direccion = -1
+	self.direccion_de_movmiento = vmath.vector3(0, self.direccion, self.posicion.z)
+	self.velocidad = datos.velocidad_de_plataformas
 end
 
 function final(self)
@@ -12,18 +14,27 @@ function final(self)
 end
 
 function update(self, dt)
-	-- Add update code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
+	local posicion_nueva = self.direccion_de_movmiento * self.velocidad * dt
+	local posicion_actual = go.get_position()
+	go.set_position(posicion_actual + posicion_nueva)
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id == hash("trigger_response") then
+	if message_id == hash("trigger_response") and message.other_group == hash("player") then
 		if message.enter == true then
 			msg.post(message.other_id, "set_parent", {parent_id = go.get_id(), keep_world_transform = 1})
 		elseif message.enter == false then
 			msg.post(message.other_id, "set_parent", {keep_world_transform = 1})
 
+		end
+	elseif message_id == hash("trigger_response") and message.other_group == hash("pared") then
+		if message.enter == true then
+			if self.direccion == 1 then 
+				self.direccion = -1 
+			else
+				self.direccion = 1
+			end
+			self.direccion_de_movmiento = vmath.vector3(0, self.direccion, self.posicion.z)
 		end
 	end
 end

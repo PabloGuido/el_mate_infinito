@@ -3,7 +3,7 @@ local datos = require("main.datos")
 function init(self)
 	self.posicion = go.get_position()
 	self.direccion = 1
-	self.direccion_de_movmiento = vmath.vector3(0, self.direccion, self.posicion.z)
+	self.direccion_de_movmiento = vmath.vector3(self.direccion, 0, self.posicion.z)
 	self.velocidad = datos.velocidad_de_plataformas
 end
 
@@ -34,7 +34,7 @@ function on_message(self, message_id, message, sender)
 			else
 				self.direccion = 1
 			end
-			self.direccion_de_movmiento = vmath.vector3(0, self.direccion, self.posicion.z)
+			self.direccion_de_movmiento = vmath.vector3(self.direccion, 0, self.posicion.z)
 		end
 	end
 end
