@@ -21,7 +21,7 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("player_interactuando_con_objeto") then
-		--pprint(message)
+
 		if datos.player_puede_mover_rocas == true then
 			local pos = go.get_position()
 			pos = pos + message.normal * - self.cantidad_de_movimiento 
@@ -29,16 +29,16 @@ function on_message(self, message_id, message, sender)
 			if result then
 				if result.group == hash("vacio") then
 					--go.delete()
-					msg.post(datos.url_del_player, "player_recobra_input")
+					msg.post(sender, "player_recobra_input")
 					print("1")
 				elseif result.group == hash("pared") or result.group == hash("roca") or result.group == hash("rompible") or result.group == hash("camara") then
-					msg.post(datos.url_del_player, "player_recobra_input")
+					msg.post(sender, "player_recobra_input")
 				end
 			elseif message.color ~= self.color then
-				msg.post(datos.url_del_player, "player_recobra_input")
+				msg.post(sender, "player_recobra_input")
 				print("colores diferentes")
 			else
-				go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, pos, go.EASING_LINEAR, 0.5, 0, function() msg.post(datos.url_del_player, "player_recobra_input") end)
+				go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, pos, go.EASING_LINEAR, 0.5, 0, function() msg.post(sender, "player_recobra_input") end)
 				print("mismos diferentes")
 			end
 		else

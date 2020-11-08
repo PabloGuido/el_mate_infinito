@@ -25,7 +25,7 @@ instances {
   position {
     x: 0.0
     y: 0.0
-    z: -0.5
+    z: -0.1
   }
   rotation {
     x: 0.0
@@ -43,8 +43,8 @@ instances {
   id: "plataforma_segura"
   prototype: "/puzzles/saltar_plataformas_01/plataforma_segura.go"
   position {
-    x: 32.0
-    y: 23.0
+    x: 108.0
+    y: 59.0
     z: 0.0
   }
   rotation {
@@ -64,9 +64,9 @@ instances {
   prototype: "/player/player.go"
   children: "charge"
   position {
-    x: 38.0
-    y: 24.0
-    z: 1.0
+    x: 108.0
+    y: 59.0
+    z: 0.75
   }
   rotation {
     x: 0.0
@@ -85,7 +85,247 @@ instances {
   prototype: "/player/charge.go"
   position {
     x: 0.0
+    y: -5.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
     y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "mover_camara_grande"
+  prototype: "/main/movedores de camara/mover_camara_grande.go"
+  position {
+    x: 0.0
+    y: 85.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "mover_camara_grande1"
+  prototype: "/main/movedores de camara/mover_camara_grande.go"
+  position {
+    x: 216.0
+    y: 85.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "mover_camara_grande2"
+  prototype: "/main/movedores de camara/mover_camara_grande.go"
+  position {
+    x: 108.0
+    y: 191.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.70710677
+    w: 0.70710677
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "mover_camara_grande3"
+  prototype: "/main/movedores de camara/mover_camara_grande.go"
+  position {
+    x: -115.0
+    y: 192.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.70710677
+    w: 0.70710677
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "mover_camara_grande4"
+  prototype: "/main/movedores de camara/mover_camara_grande.go"
+  position {
+    x: 334.0
+    y: 192.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.70710677
+    w: 0.70710677
+  }
+  scale3 {
+    x: 0.941
+    y: 0.941
+    z: 0.941
+  }
+}
+instances {
+  id: "mover_camara_grande5"
+  prototype: "/main/movedores de camara/mover_camara_grande.go"
+  position {
+    x: 107.0
+    y: 384.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.70710677
+    w: 0.70710677
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "mover_camara_grande6"
+  prototype: "/main/movedores de camara/mover_camara_grande.go"
+  position {
+    x: 116.0
+    y: 577.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.70710677
+    w: 0.70710677
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "mover_camara_grande7"
+  prototype: "/main/movedores de camara/mover_camara_grande.go"
+  position {
+    x: 111.0
+    y: 766.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.70710677
+    w: 0.70710677
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "roca_rompible"
+  prototype: "/objetos/roca_rompible.go"
+  position {
+    x: 154.0
+    y: 696.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "roca"
+  prototype: "/puzzles/mover_rocas/roca.go"
+  position {
+    x: 58.0
+    y: 671.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "roca1"
+  prototype: "/puzzles/mover_rocas/roca.go"
+  position {
+    x: 105.0
+    y: 119.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "roca_rompible1"
+  prototype: "/objetos/roca_rompible.go"
+  position {
+    x: 150.0
+    y: 110.0
     z: 0.0
   }
   rotation {
@@ -101,3 +341,31 @@ instances {
   }
 }
 scale_along_z: 0
+embedded_instances {
+  id: "movedores_de_camara"
+  children: "mover_camara_grande"
+  children: "mover_camara_grande1"
+  children: "mover_camara_grande2"
+  children: "mover_camara_grande3"
+  children: "mover_camara_grande4"
+  children: "mover_camara_grande5"
+  children: "mover_camara_grande6"
+  children: "mover_camara_grande7"
+  data: ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}

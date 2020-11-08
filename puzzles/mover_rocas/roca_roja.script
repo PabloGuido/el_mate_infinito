@@ -29,16 +29,16 @@ function on_message(self, message_id, message, sender)
 			if result then
 				if result.group == hash("vacio") then
 					--go.delete()
-					msg.post(datos.url_del_player, "player_recobra_input")
+					msg.post(sender, "player_recobra_input")
 					print("1")
 				elseif result.group == hash("pared") or result.group == hash("roca") or result.group == hash("rompible") or result.group == hash("camara") then
-					msg.post(datos.url_del_player, "player_recobra_input")
+					msg.post(sender, "player_recobra_input")
 				end
 			elseif message.color ~= self.color then
-				msg.post(datos.url_del_player, "player_recobra_input")
+				msg.post(sender, "player_recobra_input")
 				print("colores diferentes")
 			else
-				go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, pos, go.EASING_LINEAR, 0.5, 0, function() msg.post(datos.url_del_player, "player_recobra_input") end)
+				go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, pos, go.EASING_LINEAR, 0.5, 0, function() msg.post(sender, "player_recobra_input") end)
 				print("mismos colores")
 			end
 		else

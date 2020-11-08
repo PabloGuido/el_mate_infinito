@@ -42,7 +42,7 @@ embedded_components {
   "    count: 3\n"
   "  }\n"
   "  data: 0.5\n"
-  "  data: 84.0\n"
+  "  data: 105.0\n"
   "  data: 10.0\n"
   "}\n"
   "linear_damping: 0.0\n"

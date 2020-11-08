@@ -53,7 +53,7 @@ local function mover_camara (otro_objeto, otro_posicion, normal)
 end
 
 local function draw_line(from, to)
-	msg.post("@render:", "draw_line", { start_point = from, end_point = to, color = vmath.vector4(0,0,0,0) })
+	msg.post("@render:", "draw_line", { start_point = from, end_point = to, color = vmath.vector4(1,0,0,1) })
 end
 
 function init(self)	
@@ -69,7 +69,7 @@ function init(self)
 	self.ultima_animacion = sprite_frente_idle
 	self.ultima_animacion_direccion = vmath.vector3()
 	-- Variables para el raycast.
-	self.longitud_del_raycast = 8
+	self.longitud_del_raycast = 12
 	self.to = vmath.vector3(0, -self.longitud_del_raycast, 0)
 
 	-- Variables para ver sobre donde está parado el player cuando sea necesario.
@@ -165,7 +165,8 @@ function update(self, dt)
 
 	local posicion_nueva = self.direccion_donde_apunta_player * self.velocidad_de_movimiento * dt -- (2)
 	local posicion_actual = go.get_position()
-	draw_line(posicion_actual, posicion_actual + self.to)
+	vmath.vector3(posicion_actual.x, posicion_actual.y - 5, posicion_actual.z)
+	draw_line(vmath.vector3(posicion_actual.x, posicion_actual.y - 5, posicion_actual.z), vmath.vector3(posicion_actual.x, posicion_actual.y - 5, posicion_actual.z) + self.to)
 
 
 	go.set_position(posicion_actual + posicion_nueva) -- (3)
@@ -201,6 +202,12 @@ function on_message(self, message_id, message, sender)
 		if message.other_group == hash("pared") then
 			local newpos = go.get_position() + message.normal * message.distance
 			go.set_position(newpos)
+		elseif message.other_group == hash("roca") then
+			local newpos = go.get_position() + message.normal * message.distance
+			go.set_position(newpos)
+		elseif	message.other_group == hash("rompible") then
+			local newpos = go.get_position() + message.normal * message.distance
+			go.set_position(newpos)
 		elseif message.other_group == hash("camara") then
 			--pprint(message)
 			if test == false then
@@ -224,13 +231,13 @@ function on_message(self, message_id, message, sender)
 		elseif message.other_group == hash("camara") and message.enter == true then
 			pprint(message)
 		end
-	elseif message_id == hash("rompible_destruido") then
+	elseif message_id == hash("rompible_responde") then
 		self.objeto_destruido = true
 		self.velocidad_de_movimiento = self.velocidad_por_defecto 
 		self.carga_de_embestida = 0 
 		self.embistiendo = false 
 		msg.post(".", "acquire_input_focus") 
-		go.set_position(vmath.vector3(0,0,-0.25), "charge") 
+		go.set_position(vmath.vector3(0,-5,-0.25), "charge") 
 		timer.delay(0.1, false, function() self.objeto_destruido = false end)
 	elseif message_id == hash("player_recobra_input") then
 		msg.post(".", "acquire_input_focus")
@@ -263,80 +270,81 @@ if action_id == hash("derecha") then
 
 
 elseif action_id == hash("charge") then
+	if datos.player_puede_saltar == true then
+		self.embistiendo = true
 
-	self.embistiendo = true
+		if action.released == false then
+			self.presionando_tecla_de_embestida = true
+			self.carga_de_embestida = self.carga_de_embestida + 1
+			--print(self.charge)
+			if self.carga_de_embestida >= 50 then
 
-	if action.released == false then
-		self.presionando_tecla_de_embestida = true
-		self.carga_de_embestida = self.carga_de_embestida + 1
-		--print(self.charge)
-		if self.carga_de_embestida >= 50 then
-
-			if self.embestida_cargada_sonido == false then
-				self.embestida_cargada_sonido = true
-				sound.play("#embestida_cargada")
-			end
-
-		elseif self.carga_de_embestida >= 25 then
-			if self.sonando_carga_de_embestida == false then
-				self.sonando_carga_de_embestida = true
-				sound.play("#charging")
-				particlefx.play("#charging1")
-			end
-
-		end
-
-	elseif action.released == true then
-		self.presionando_tecla_de_embestida = false
-
-		if self.carga_de_embestida <= 50 then
-			msg.post(".", "release_input_focus")
-			self.sonando_carga_de_embestida = false
-			sound.stop("#charging")
-			particlefx.stop("#charging1")
-			self.carga_de_embestida = 0
-
-			if self.direccion_donde_apunta_player == vmath.vector3() then
-				self.direccion_donde_apunta_player = self.ultima_direccion_donde_apunto_player
-			end
-
-			sound.play("#dash")
-			
-			self.velocidad_de_movimiento = 230
-			timer.delay(0.1, false,
-			function()
-				self.velocidad_de_movimiento = self.velocidad_por_defecto
-				msg.post(".", "acquire_input_focus")
-				self.embistiendo = false 
-			end)
-
-		elseif self.carga_de_embestida >= 50 then
-			sound.play("#charging_swipe")
-			--print("CHARGING!!!")
-			msg.post(".", "release_input_focus")
-			self.embestida_cargada_sonido = false
-			self.sonando_carga_de_embestida = false
-			sound.stop("#charging")
-			particlefx.stop("#charging1")
-			if self.direccion_donde_apunta_player == vmath.vector3() then
-				self.direccion_donde_apunta_player = self.ultima_direccion_donde_apunto_player
-			end
-			go.set_position(self.ultima_direccion_donde_apunto_player * 8, "charge") -- mueve el charge collition
-			self.velocidad_de_movimiento = 475
-
-			timer.delay(0.1, false, 
-			function()
-				if self.objeto_destruido == false then 
-					self.embistiendo = false 
-					self.velocidad_de_movimiento = self.velocidad_por_defecto 
-					self.carga_de_embestida = 0 
-					msg.post(".", "acquire_input_focus") 
-					go.set_position(vmath.vector3(0,0,-0.25), "charge") 
+				if self.embestida_cargada_sonido == false then
+					self.embestida_cargada_sonido = true
+					sound.play("#embestida_cargada")
 				end
-			end)
+
+			elseif self.carga_de_embestida >= 25 then
+				if self.sonando_carga_de_embestida == false then
+					self.sonando_carga_de_embestida = true
+					sound.play("#charging")
+					particlefx.play("#charging1")
+				end
+
+			end
+
+		elseif action.released == true then
+			self.presionando_tecla_de_embestida = false
+
+			if self.carga_de_embestida <= 50 then
+				msg.post(".", "release_input_focus")
+				self.sonando_carga_de_embestida = false
+				sound.stop("#charging")
+				particlefx.stop("#charging1")
+				self.carga_de_embestida = 0
+
+				if self.direccion_donde_apunta_player == vmath.vector3() then
+					self.direccion_donde_apunta_player = self.ultima_direccion_donde_apunto_player
+				end
+
+				sound.play("#dash")
+				
+				self.velocidad_de_movimiento = 230
+				timer.delay(0.1, false,
+				function()
+					self.velocidad_de_movimiento = self.velocidad_por_defecto
+					msg.post(".", "acquire_input_focus")
+					self.embistiendo = false 
+				end)
+
+			elseif self.carga_de_embestida >= 50 then
+				sound.play("#charging_swipe")
+				--print("CHARGING!!!")
+				msg.post(".", "release_input_focus")
+				self.embestida_cargada_sonido = false
+				self.sonando_carga_de_embestida = false
+				sound.stop("#charging")
+				particlefx.stop("#charging1")
+				if self.direccion_donde_apunta_player == vmath.vector3() then
+					self.direccion_donde_apunta_player = self.ultima_direccion_donde_apunto_player
+				end
+				go.set_position(self.ultima_direccion_donde_apunto_player * 8, "charge") -- mueve el charge collition
+				self.velocidad_de_movimiento = 475
+
+				timer.delay(0.1, false, 
+				function()
+					if self.objeto_destruido == false then 
+						self.embistiendo = false 
+						self.velocidad_de_movimiento = self.velocidad_por_defecto 
+						self.carga_de_embestida = 0 
+						msg.post(".", "acquire_input_focus") 
+						go.set_position(vmath.vector3(0,-5,-0.25), "charge") 
+					end
+				end)
+
+			end
 
 		end
-
 	end
 	
 elseif action_id == hash("fisicas_debug") and action.pressed then 
@@ -346,7 +354,9 @@ elseif action_id == hash("pos") and action.pressed then
 	-- Muestra la posicion actual en la consola.
 	print(go.get_position())
 elseif action_id == hash("accion") and action.pressed then
-	local result = physics.raycast(go.get_position(), go.get_position() + self.to, { hash("objeto"), hash("roca") })
+	local pos_player = go.get_position()
+	local pos_inicial_ray = vmath.vector3(pos_player.x, pos_player.y - 5, pos_player.z)
+	local result = physics.raycast(pos_inicial_ray, pos_inicial_ray + self.to, { hash("objeto"), hash("roca") })
 	if result then
 		self.sonando_carga_de_embestida = false
 		sound.stop("#charging")

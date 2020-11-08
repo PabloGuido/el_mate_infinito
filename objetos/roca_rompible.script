@@ -17,13 +17,17 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("trigger_response") then
-		if message.other_group == hash("charge") then
-			if message.enter == true then
-				msg.post(datos.url_del_player, "rompible_destruido")
-				particlefx.play("#roca_rompible_fx")
-				sound.play("#roca_rompible_snd")
-				go.delete()
+		if datos.player_puede_romeper_rocas == true then
+			if message.other_group == hash("charge") then
+				if message.enter == true then
+					msg.post(sender, "rompible_responde")
+					particlefx.play("#roca_rompible_fx")
+					sound.play("#roca_rompible_snd")
+					go.delete()
+				end
 			end
+		else
+			msg.post(sender, "rompible_responde")
 		end
 	end
 end
