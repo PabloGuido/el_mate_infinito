@@ -2814,9 +2814,23 @@ layers {
     v_flip: 0
   }
   cell {
+    x: 13
+    y: 10
+    tile: 27
+    h_flip: 0
+    v_flip: 0
+  }
+  cell {
     x: 16
     y: 10
     tile: 5
+    h_flip: 0
+    v_flip: 0
+  }
+  cell {
+    x: -5
+    y: 10
+    tile: 27
     h_flip: 0
     v_flip: 0
   }
@@ -3510,6 +3524,13 @@ layers {
     x: 29
     y: 61
     tile: 14
+    h_flip: 0
+    v_flip: 0
+  }
+  cell {
+    x: 45
+    y: 61
+    tile: 27
     h_flip: 0
     v_flip: 0
   }
@@ -8626,6 +8647,11 @@ layers {
     h_flip: 0
     v_flip: 0
   }
+}
+layers {
+  id: "layer"
+  z: 0.0
+  is_visible: 1
 }
 material: "/builtins/materials/tile_map.material"
 blend_mode: BLEND_MODE_ALPHA

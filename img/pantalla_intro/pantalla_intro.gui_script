@@ -6,16 +6,16 @@ hombres y mujeres han contado la historia
 de un Mate Infinito.
 ]]
 texto_de_la_historia[2] = [[Un mate tan poderoso que,
-su bombilla nunca se tapara,
-su yerba nunca se lavara]]
-texto_de_la_historia[3] = [[y el agua siempre conservara
+su bombilla nunca se tapará,
+su yerba nunca se lavará]]
+texto_de_la_historia[3] = [[y el agua siempre conservará
 la temperatura perfecta para quien lo beba.]]
-texto_de_la_historia[4] = [[Pero sus partes se perdieron hace cientos de anos
-y ya nadie mas volvio a verlo.]]
+texto_de_la_historia[4] = [[Pero sus partes se perdieron hace cientos de años
+y ya nadie mas volvió a verlo.]]
 texto_de_la_historia[5] = [[Pero hay rumores...
 Y existe la posibilidad de encontrar esta reliquia.]]
 texto_de_la_historia[6] = [[Quien pueda aventurarse en las profundidades del bosque,
-encontrara el Mate Infinito.]]
+encontrará el Mate Infinito.]]
 
 local function omitir_cinematica (self)
 	msg.post("#pantalla_intro_controlador", "omitir_cinematica", {audio = self.numero_de_audio_sonando})
@@ -31,7 +31,7 @@ local function omitir_cinematica (self)
 		msg.post("camera", "disable")
 		msg.post("main:/cargador_de_mapas_y_player#cargador_de_mapas", "fin_de_cinematica")
 	end)
-	
+	sound.stop("#sound")
 end
 
 local function audio_y_text_cinematica (self)
@@ -70,6 +70,7 @@ local function audio_y_text_cinematica (self)
 					msg.post(".", "release_input_focus")
 					omitir_cinematica(self)
 					print("fin de cinematica")
+					sound.stop("#sound")
 					return
 				else
 					gui.animate(self.texto_historia, "color.w", 0, gui.EASING_LINEAR, 0.5, 0, secuencia_audio_texto)
@@ -83,6 +84,7 @@ local function audio_y_text_cinematica (self)
 end
 
 local function cinematica (self)
+	sound.play("#sound")
 	particlefx.play("#efecto_intro")
 	particlefx.play("#efecto_intro1")
 	particlefx.set_constant("#efecto_intro", "emitter", "tint", vmath.vector4(1, 1,0, 1))
@@ -136,9 +138,8 @@ function init(self)
 end
 
 function final(self)
-	-- Add finalization code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
+	
+	
 end
 
 function update(self, dt)

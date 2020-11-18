@@ -95,6 +95,8 @@ function init(self)
 	self.embistiendo = false
 	--Objeto destruido/embestido
 	self.objeto_destruido = false	
+	-- musica
+	
 
 	-- cosas de la camara y raycast ?
 	--mensaje_camera_seguir_player ()
@@ -104,7 +106,7 @@ function init(self)
 
 	if datos.primera_vez_que_se_inicia_el_player == true then -- poner el caso cuando no es la primera vez
 		datos.primera_vez_que_se_inicia_el_player = false
-			go.set("/mapa_01#mapa_01", "tint.w", 0)
+		go.set("/mapa_01#mapa_01", "tint.w", 0)
 			go.set("#sprite", "tint.w", 0)
 		go.animate("#sprite", "tint.w", go.PLAYBACK_ONCE_FORWARD, 1, go.EASING_LINEAR, 3, 2, 
 		function()

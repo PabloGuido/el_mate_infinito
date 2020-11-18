@@ -1,5 +1,6 @@
 function init(self)
 	self.nombre_del_mapa = "#Bosque_principal"
+	sound.play("#sound")
 end
 
 function final(self)
@@ -17,6 +18,8 @@ end
 function on_message(self, message_id, message, sender)
 	if message_id == hash("trigger_response") and message.enter then
 		--msg.post(message.other_id, "release_input_focus")
+		sound.stop("#sound")
+		
 		msg.post("main:/cargador_de_mapas_y_player#cargador_de_mapas", "cambiar_de_mapa", {mapa_actual = self.nombre_del_mapa, mapa_nuevo = "#pantalla_final"})
 	end
 end

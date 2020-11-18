@@ -1,6 +1,6 @@
 local M = {}
 
-M.primera_vez_que_se_inicia_el_player = false
+M.primera_vez_que_se_inicia_el_player = true
 M.url_del_player = "player/player#player"
 M.player_puede_saltar = false
 M.player_puede_romeper_rocas = false
